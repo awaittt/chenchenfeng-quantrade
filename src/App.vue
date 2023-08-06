@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import TradeTop from "@/components/trade-top/index.vue";
 import TradeBottom from "@/components/trade-bottom/index.vue";
+import { onMounted } from "vue";
+import { request } from '@/utils/request'
+
 </script>
 
 <template>
@@ -16,5 +19,10 @@ import TradeBottom from "@/components/trade-bottom/index.vue";
 .main {
     width: 100%;
     height: 100vh;
+    position: relative;
+
+    .content {
+        padding-top: 5rem;
+    }
 }
 </style>

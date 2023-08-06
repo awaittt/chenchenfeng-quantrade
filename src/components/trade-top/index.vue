@@ -33,7 +33,8 @@ import img from '@/assets/images/logo.png'
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #f0f0f0;
-
+    position: absolute;
+    z-index: 999;
     & .info {
         display: flex;
         align-items: center;
