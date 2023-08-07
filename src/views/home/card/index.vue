@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, onUpdated, watch } from 'vue';
 import { HomeHospital, HomeHospitalInterface } from '@/api/home/index'
+import { useRouter } from 'vue-router';
+const $router = useRouter()
 
+const goDetail = () => {
+    $router.push({ path: '/hospital' })
+}
+const item = defineProps(['districtCode', 'hostype'])
 const pageData = reactive({
     currennt: 1,
     pageSize: 10,
     total: 10
 })
-let data = reactive({})
+let data = reactive<Array<HomeHospitalInterface.Content>>([])
 onMounted(() => {
     getData()
 })
+
+
+
 const getData = () => {
-    HomeHospital.List({ page: pageData.currennt, limit: pageData.pageSize }).then((ret) => {
+    HomeHospital.List({ page: pageData.currennt, limit: pageData.pageSize, hostype: item.hostype, districtCode: item.districtCode }).then((ret) => {
         if (ret) {
             data = ret.content
             pageData.total = ret.totalElements
@@ -28,14 +37,21 @@ const handleSizeChange = (value: number) => {
 const handleCurrentChange = (value: number) => {
     getData()
 }
+onMounted(() => {
+
+})
+
+onUpdated(() => {
+    getData()
+})
 
 
 </script>
 
 <template>
-    <div class="content">
+    <div v-if="data.length > 0" class="content">
         <el-card v-for="(o, index) in (data as Array<HomeHospitalInterface.Content>)" :key="index" shadow="hover"
-            class="box" :body-style="{ width: '100%' }">
+            class="box" :body-style="{ width: '100%' }" @click="goDetail">
             <div class="box-card">
                 <div class="hospital">
                     <div class="name">
@@ -73,6 +89,9 @@ const handleCurrentChange = (value: number) => {
             :total="pageData.total" class="pagination" @size-change="handleSizeChange"
             @current-change="handleCurrentChange" />
     </div>
+    <template v-else>
+        <el-empty description="暂无数据" />
+    </template>
 </template>
 
 <style scoped lang="scss">

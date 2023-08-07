@@ -1,5 +1,7 @@
 
 <script setup lang="ts">
+const { item, classFlag } = defineProps(['item', 'classFlag'])
+const $emit = defineEmits(['handle'])
 
 </script>
 
@@ -9,16 +11,11 @@
         <div class="content">
             <div>等级：</div>
             <div class="right">
-                <div class="active">全部</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
-                <div>三级甲等</div>
+                <div :class="{ active: classFlag === '' }" @click="$emit('handle', '')">全部</div>
+                <div v-for="o in item" :key="o.id" :class="{ active: classFlag === o.value }"
+                    @click="$emit('handle', o.value)">
+                    {{ o.name }}
+                </div>
             </div>
         </div>
     </div>
@@ -30,7 +27,7 @@
     color: #bfbfbf;
     flex-direction: column;
     width: 100%;
-    padding: 0 5rem;
+    padding: 6px 5rem 0 5rem;
 
     .top {
         font-size: 20px;

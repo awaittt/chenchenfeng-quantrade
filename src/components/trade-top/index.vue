@@ -7,12 +7,17 @@ export default defineComponent({
 
 <script setup lang="ts">
 import img from '@/assets/images/logo.png'
+import { useRouter } from 'vue-router';
+const $router = useRouter()
 
+const goHome = () => {
+    $router.push({ path: '/home' })
+}
 </script>
 
 <template>
     <div class="main">
-        <div class="info">
+        <div class="info" @click="goHome">
             <img :src="img" class="img">
             <div>尚医通</div>
             <div>预约挂号统一平台</div>
@@ -35,6 +40,7 @@ import img from '@/assets/images/logo.png'
     border-bottom: 1px solid #f0f0f0;
     position: absolute;
     z-index: 999;
+
     & .info {
         display: flex;
         align-items: center;

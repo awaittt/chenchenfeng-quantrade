@@ -1,6 +1,9 @@
 export interface ListParams {
   page: number;
   limit: number;
+  hostype?: string;
+  districtCode?: string;
+  hosname?:string
 }
 
 export interface ListInfo<T1> {
@@ -29,7 +32,7 @@ export interface Content {
   provinceCode: string;
   cityCode: string;
   districtCode: string;
-  address: Address;
+  address: string;
   logoData: string;
   intro: null | string;
   route: string;
@@ -37,42 +40,18 @@ export interface Content {
   bookingRule: BookingRule;
 }
 
-enum Address {
-  Empty = "",
-  大望路 = "大望路",
-}
-
 interface BookingRule {
   cycle: number;
   releaseTime: string;
-  stopTime: StopTime;
+  stopTime: string;
   quitDay: number;
-  quitTime: QuitTime;
-  rule: Rule[];
-}
-enum QuitTime {
-  The1530 = "15:30",
-}
-
-enum Rule {
-  东院区预约号取号地点东院区老门诊楼一层大厅挂号窗口或新门诊楼各楼层挂号收费窗口取号 = "东院区预约号取号地点：东院区老门诊楼一层大厅挂号窗口或新门诊楼各楼层挂号/收费窗口取号",
-  西院区预约号取号地点西院区门诊楼一层大厅挂号窗口取号 = "西院区预约号取号地点：西院区门诊楼一层大厅挂号窗口取号",
-}
-
-enum StopTime {
-  The1130 = "11:30",
-  The1230 = "12:30",
+  quitTime: string;
+  rule: string[];
 }
 
 interface Param {
-  hostypeString: HostypeString;
+  hostypeString: string;
   fullAddress: string;
-}
-
-enum HostypeString {
-  三级乙等 = "三级乙等",
-  三级甲等 = "三级甲等",
-  二级乙等 = "二级乙等",
 }
 
 interface Pageable {
@@ -88,4 +67,17 @@ interface Sort {
   sorted: boolean;
   unsorted: boolean;
   empty: boolean;
+}
+
+export interface LevelAndRegoneInfo {
+  id: number;
+  createTime: string;
+  updateTime: string;
+  isDeleted: number;
+  param: {};
+  parentId: number;
+  name: string;
+  value: string;
+  dictCode: string;
+  hasChildren: boolean;
 }

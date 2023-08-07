@@ -11,10 +11,16 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://139.198.34.216:8201',
+      //GET /admin/cmn/dict
+      "/api/admin/cmn/dict": {
+        target: "http://139.198.34.216:8202",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+      "/api": {
+        target: "http://139.198.34.216:8201",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
