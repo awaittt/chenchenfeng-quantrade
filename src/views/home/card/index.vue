@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const $router = useRouter()
 
 const goDetail = () => {
-    $router.push({ path: '/hospital' })
+    $router.push({ path: '/hospital/register' })
 }
 const item = defineProps(['districtCode', 'hostype'])
 const pageData = reactive({

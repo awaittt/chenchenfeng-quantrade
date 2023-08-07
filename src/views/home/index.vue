@@ -3,7 +3,7 @@ import Carousel from './carousel/index.vue'
 import Search from './search/index.vue'
 import Level from './level/index.vue'
 import Region from './region/index.vue'
-
+import Tip from './tip/index.vue'
 import Card from './card/index.vue'
 import { onMounted, reactive, ref } from 'vue'
 import { HomeHospital, HomeHospitalInterface } from '@/api/home'
@@ -57,7 +57,9 @@ onMounted(() => {
                 <Card :districtCode="classRegionFlag" :hostype="classLevelFlag" />
 
             </el-col>
-            <el-col :span="4"></el-col>
+            <el-col :span="4">
+                <Tip />
+            </el-col>
         </el-row>
     </div>
 </template>

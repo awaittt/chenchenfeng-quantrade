@@ -20,9 +20,10 @@ import { request } from '@/utils/request'
     width: 100%;
     height: 100vh;
     position: relative;
-
     .content {
         padding-top: 5rem;
+        width: 100%;
+        min-height: 100%;
     }
 }
 </style>

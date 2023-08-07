@@ -6,7 +6,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="main">
+    <div class="main_botton">
         <div class="content">
             <div class="left"> 闽ICP 13018369号 电话挂号0595-87292114</div>
             <div class="right">
@@ -17,19 +17,14 @@ export default defineComponent({
 
             </div>
         </div>
-
-    </div>
-    <div>
-
     </div>
 </template>
 
 <style scoped lang="scss">
-.main {
+.main_botton {
     width: 100%;
     height: 50px;
     background: #f0f2f5;
-    display: flex;
     justify-content: center;
 
     .content {
