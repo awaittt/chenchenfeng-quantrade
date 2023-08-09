@@ -2,15 +2,21 @@
 import { useRouter, useRoute } from 'vue-router'
 const $router = useRouter()
 const $route = useRoute()
+import useHospitalDetail from '@/store/module/hospitalDetail'
+import { onMounted } from 'vue';
+
+const hospitalDetail = useHospitalDetail()
 
 const selectMenu = (e: any) => {
 
     $router.push({ path: `/hospital/${e.index}` })
-    console.log($route.path.slice(10))
 
 }
+onMounted(() => {
+    hospitalDetail.getData($route.query.hoscode as string)
+})
 
-console.log($route.path)
+
 </script>
 
 <template>

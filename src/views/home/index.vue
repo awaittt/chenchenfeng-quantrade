@@ -54,7 +54,7 @@ onMounted(() => {
                 <Level :item="levelData" :classFlag="classLevelFlag" @handle="handleLevelchange"></Level>
                 <Region :item="regionData" :classFlag="classRegionFlag" @handle="handleRegionchange"></Region>
                 <!-- 医院卡片 -->
-                <Card :districtCode="classRegionFlag" :hostype="classLevelFlag" />
+                <Card :districtCode="classRegionFlag" :hostype="classLevelFlag"  />
 
             </el-col>
             <el-col :span="4">

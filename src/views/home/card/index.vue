@@ -4,15 +4,19 @@ import { HomeHospital, HomeHospitalInterface } from '@/api/home/index'
 import { useRouter } from 'vue-router';
 const $router = useRouter()
 
-const goDetail = () => {
-    $router.push({ path: '/hospital/register' })
-}
+
 const item = defineProps(['districtCode', 'hostype'])
 const pageData = reactive({
     currennt: 1,
     pageSize: 10,
     total: 10
 })
+const goDetail = () => {
+    $router.push({
+        path: '/hospital/register', query: {
+        }
+    })
+}
 let data = reactive<Array<HomeHospitalInterface.Content>>([])
 onMounted(() => {
     getData()

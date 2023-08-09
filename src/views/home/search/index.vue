@@ -14,7 +14,13 @@ const getDetail = async (query: string, callback: (item: any) => void) => {
     }))
 }
 const handleSelect = (item: any) => {
-    $router.push({ path: '/hospital/register' })
+
+    $router.push({
+        path: `/hospital/register`, query:
+        {
+            hoscode: item.hoscode
+        }
+    })
 }
 
 </script>
