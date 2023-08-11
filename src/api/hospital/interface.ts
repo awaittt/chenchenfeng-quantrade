@@ -1,5 +1,5 @@
 export interface DataInfo {
-  BookingRule: {
+  bookingRule: {
     cycle: number;
     releaseTime: string;
     stopTime: string;
@@ -7,7 +7,7 @@ export interface DataInfo {
     quitTime: string;
     rule: string[];
   };
-  Hospital: {
+  hospital: {
     id: string;
     createTime: string;
     updateTime: string;
@@ -29,4 +29,14 @@ export interface DataInfo {
     status: number;
     bookingRule: null;
   };
+}
+
+export interface DepartmentInfo {
+  datum: Datum;
+}
+
+interface Datum {
+  depcode: string;
+  depname: string;
+  children: Datum[] ;
 }

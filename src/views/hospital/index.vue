@@ -8,9 +8,11 @@ import { onMounted } from 'vue';
 const hospitalDetail = useHospitalDetail()
 
 const selectMenu = (e: any) => {
-
-    $router.push({ path: `/hospital/${e.index}` })
-
+    $router.push({
+        path: `/hospital/${e.index}`, query: {
+            hoscode: $route.query.hoscode
+        }
+    })
 }
 onMounted(() => {
     hospitalDetail.getData($route.query.hoscode as string)

@@ -1,15 +1,14 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { HospitalDetail, HospitalDetailInterface } from "@/api/hospital";
 
 const useCounterStore = defineStore("hospitalDetail", () => {
-  let data;
+  let thedata = ref<HospitalDetailInterface.DataInfo|undefined>();
   const getData = async (query: string) => {
-    const theDta = await HospitalDetail.Reserve(query);
-    console.log(theDta);
+    thedata.value = await HospitalDetail.Reserve(query);
   };
 
-  return { getData, data };
+  return { getData, thedata };
 });
 
 export default useCounterStore;
